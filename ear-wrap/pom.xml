@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>business</artifactId>
+        <groupId>org.lighthouse</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>ear</packaging>
+
+    <artifactId>ear-wrap</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <defaultLibBundleDir>lib/</defaultLibBundleDir>
+                    <skinnyWars>true</skinnyWars>
+                    <jboss>
+                        <version>5</version>
+                        <!--unauthenticated-principal>guest</unauthenticated-principal>
+                        <loader-repository>com.foo:loader=foo-application-1.0.ear</loader-repository-->
+                    </jboss>
+                    <modules>
+                        <webModule>
+                            <groupId>org.lighthouse</groupId>
+                            <artifactId>web-bridge</artifactId>
+                            <contextRoot>${bridge.app.context}</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+
+        <dependency>
+            <groupId>org.mitre.dsmiley.httpproxy</groupId>
+            <artifactId>smiley-http-proxy-servlet</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.10</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>15.0</version>
+            <classifier>cdi1.0</classifier>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.lighthouse</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lighthouse</groupId>
+            <artifactId>vertx-app</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.lighthouse</groupId>
+            <artifactId>web-bridge</artifactId>
+            <version>1.0-SNAPSHOT</version>
+
+            <type>war</type>
+        </dependency>
+
+
+
+    </dependencies>
+
+
+</project>

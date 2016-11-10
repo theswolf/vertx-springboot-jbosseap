@@ -1,0 +1,3 @@
+<jboss-web>
+    <context-root>@bridge.app.context@</context-root>
+</jboss-web>
